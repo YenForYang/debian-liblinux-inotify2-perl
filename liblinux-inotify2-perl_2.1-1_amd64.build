@@ -1,0 +1,114 @@
+ dpkg-buildpackage -D -us -uc -ui -b -Jauto -Pnobiarch,nocheck,nodoc
+dpkg-buildpackage: info: source package liblinux-inotify2-perl
+dpkg-buildpackage: info: source version 1:2.1-1
+dpkg-buildpackage: info: source distribution unstable
+dpkg-buildpackage: info: source changed by Joao Eriberto Mota Filho <eriberto@debian.org>
+ dpkg-source --before-build .
+dpkg-buildpackage: info: host architecture amd64
+dpkg-source: info: using patch list from debian/patches/series
+dpkg-source: info: applying 10_fix-interpreter-path.patch
+ fakeroot debian/rules clean
+dh clean
+   dh_auto_clean
+	make -j8 distclean
+make[1]: Entering directory '/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl'
+"/usr/bin/perl" "-MExtUtils::Manifest=fullcheck" -e fullcheck
+rm -f \
+  Inotify2.bso Inotify2.def \
+  Inotify2.exp Inotify2.x \
+  Inotify2.bs blib/arch/auto/Linux/Inotify2/extralibs.all \
+  blib/arch/auto/Linux/Inotify2/extralibs.ld Makefile.aperl \
+  *.a *.o \
+  *perl.core Inotify2.base \
+  Inotify2.bs Inotify2.bso \
+  Inotify2.c Inotify2.def \
+  Inotify2.exp Inotify2.o \
+  Inotify2_def.old MYMETA.json \
+  MYMETA.yml blibdirs.ts \
+  core core.*perl.*.? \
+  core.[0-9] core.[0-9][0-9] \
+  core.[0-9][0-9][0-9] core.[0-9][0-9][0-9][0-9] \
+  core.[0-9][0-9][0-9][0-9][0-9] libInotify2.def \
+  mon.out perl \
+  perl perl.exe \
+  perlmain.c pm_to_blib \
+  pm_to_blib.ts so_locations \
+  tmon.out 
+rm -rf \
+  blib 
+mv Makefile Makefile.old > /dev/null 2>&1
+rm -f \
+  Makefile Makefile.old \
+  Inotify2.o 
+rm -rf \
+  Linux-Inotify2-2.1 
+Not in MANIFEST: .pc/.dpkg-source-unapply
+Not in MANIFEST: .pc/.quilt_patches
+Not in MANIFEST: .pc/.quilt_series
+Not in MANIFEST: .pc/.version
+Not in MANIFEST: .pc/10_fix-interpreter-path.patch/eg/event
+Not in MANIFEST: .pc/10_fix-interpreter-path.patch/eg/simple
+Not in MANIFEST: .pc/applied-patches
+Not in MANIFEST: debian/changelog
+Not in MANIFEST: debian/compat
+Not in MANIFEST: debian/control
+Not in MANIFEST: debian/copyright
+Not in MANIFEST: debian/examples
+Not in MANIFEST: debian/patches/10_fix-interpreter-path.patch
+Not in MANIFEST: debian/patches/series
+Not in MANIFEST: debian/rules
+Not in MANIFEST: debian/source/format
+Not in MANIFEST: debian/tests/control
+Not in MANIFEST: debian/tests/test.pl
+Not in MANIFEST: debian/watch
+make[1]: Leaving directory '/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl'
+   dh_clean
+	rm -f debian/debhelper-build-stamp
+	rm -rf debian/.debhelper/
+	rm -f -- debian/liblinux-inotify2-perl.substvars debian/files
+	rm -fr -- debian/liblinux-inotify2-perl/ debian/tmp/
+	find .  \( \( \
+		\( -path .\*/.git -o -path .\*/.svn -o -path .\*/.bzr -o -path .\*/.hg -o -path .\*/CVS -o -path .\*/.pc -o -path .\*/_darcs \) -prune -o -type f -a \
+	        \( -name '#*#' -o -name '.*~' -o -name '*~' -o -name DEADJOE \
+		 -o -name '*.orig' -o -name '*.rej' -o -name '*.bak' \
+		 -o -name '.*.orig' -o -name .*.rej -o -name '.SUMS' \
+		 -o -name TAGS -o \( -path '*/.deps/*' -a -name '*.P' \) \
+		\) -exec rm -f {} + \) -o \
+		\( -type d -a -name autom4te.cache -prune -exec rm -rf {} + \) \)
+FAKEROOTKEY=1315748790 LD_LIBRARY_PATH= LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libfakeroot/libfakeroot-sysv.so debian/rules clean
+ debian/rules build
+dh build
+   dh_update_autotools_config
+   dh_autoreconf
+   dh_auto_configure
+	perl Makefile.PL INSTALLDIRS=vendor "OPTIMIZE=-g -O2 -fdebug-prefix-map=/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2" "LD=x86_64-linux-gnu-gcc -g -O2 -fdebug-prefix-map=/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl=. -Wformat -march=native -pipe -Wformat-security -Wl,-z,now"
+Checking if your kit is complete...
+Looks good
+Generating a Unix-style Makefile
+Writing Makefile for Linux::Inotify2
+Writing MYMETA.yml and MYMETA.json
+   dh_auto_build
+	make -j8
+make[1]: Entering directory '/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl'
+Running Mkbootstrap for Inotify2 ()
+"/usr/bin/perl" "/usr/share/perl/5.28/ExtUtils/xsubpp"  -typemap '/usr/share/perl/5.28/ExtUtils/typemap'  Inotify2.xs > Inotify2.xsc
+chmod 644 "Inotify2.bs"
+"/usr/bin/perl" -MExtUtils::Command::MM -e 'cp_nonempty' -- Inotify2.bs blib/arch/auto/Linux/Inotify2/Inotify2.bs 644
+cp Inotify2.pm blib/lib/Linux/Inotify2.pm
+mv Inotify2.xsc Inotify2.c
+x86_64-linux-gnu-gcc -c   -D_REENTRANT -D_GNU_SOURCE -DDEBIAN -fwrapv -fno-strict-aliasing -pipe -I/usr/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -g -O2 -fdebug-prefix-map=/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl=. -Wformat -march=native -pipe -Wformat-security -Wdate-time -D_FORTIFY_SOURCE=2   -DVERSION=\"2.1\" -DXS_VERSION=\"2.1\" -fPIC "-I/usr/lib/x86_64-linux-gnu/perl/5.28/CORE"   Inotify2.c
+as: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+rm -f blib/arch/auto/Linux/Inotify2/Inotify2.so
+x86_64-linux-gnu-gcc -g -O2 -fdebug-prefix-map=/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl=. -Wformat -march=native -pipe -Wformat-security -Wl,-z,now  -shared -L/usr/local/lib -fstack-protector-strong  Inotify2.o  -o blib/arch/auto/Linux/Inotify2/Inotify2.so  \
+      \
+  
+ld: executing 'x86_64-linux-gnu-ld'
+x86_64-linux-gnu-ld: /lib/x86_64-linux-gnu/libz.so.1: no version information available (required by /usr/lib/x86_64-linux-gnu/libbfd-2.31.1-system.so)
+chmod 755 blib/arch/auto/Linux/Inotify2/Inotify2.so
+Manifying 1 pod document
+make[1]: Leaving directory '/dev/shm/liblinux-inotify2-perl/liblinux-inotify2-perl'
+   dh_auto_test
+   create-stamp debian/debhelper-build-stamp
+ fakeroot debian/rules binary
+dh binary
+   dh_testroot
